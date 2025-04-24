@@ -23,7 +23,7 @@ const httpLink = new HttpLink({
     fetch
 })
 
-const serverClient = new ApolloClient({
+export const serverClient = new ApolloClient({
     ssrMode: true,
     link: httpLink,
     cache: new InMemoryCache(),

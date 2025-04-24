@@ -1,9 +1,41 @@
-import React from 'react';
+"use client";
+
+import {FormEvent, useState} from 'react';
 import Avatar from "@components/common/Avatar";
 import {Input} from "@components/ui/input";
 import {Button} from "@components/ui/button";
+import {useMutation} from "@apollo/client";
+import {CREATE_CHATBOT} from "@/lib/graphql/mutations/mutations";
+import {useUser} from "@clerk/nextjs";
+import {useRouter} from "next/navigation";
 
 const CreateChatbot = () => {
+
+    const [name, setName] = useState<string>("")
+
+    const router = useRouter()
+    const {user} = useUser()
+
+    const [createChatbotMutation, {data, loading, error}] = useMutation<IInsertChatbot>(CREATE_CHATBOT, {
+        variables: {
+            clerk_user_id: user?.id,
+            name
+        }
+    })
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            const {data} = await createChatbotMutation()
+            setName("")
+            router.push(`/edit-chatbot/${data?.insertChatbots.id}`)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    if (!user) return null
+
     return (
         <div
             className="flex flex-col items-center justify-center md:flex-row md:space-x-10 bg-white p-10 rounded-md m-10">
@@ -13,10 +45,13 @@ const CreateChatbot = () => {
                 <h2 className="font-light">
                     Create a new chatbot to assist you in your conversations with your customers.
                 </h2>
-                <form action="" className="flex flex-col md:flex-row gap-2 mt-5">
-                    <Input placeholder="Chatbot Name..." className="max-w-lg" required/>
-                    <Button>Create Chatbot</Button>
+                <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-2 mt-5">
+                    <Input placeholder="Chatbot Name..." value={name} onChange={e => setName(e.target.value)} className="max-w-lg" required/>
+                    <Button type="submit" disabled={loading || !name}>
+                        {loading ? "Creating..." : "Create Chatbot"}
+                    </Button>
                 </form>
+                <p className="text-gray-300 mt-5">Example: Customer Support Chatbot</p>
             </div>
         </div>
     );

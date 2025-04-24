@@ -274,7 +274,7 @@ type Mutation {
       configuration: "postgresql_config"
     )
   insertChat_sessions(
-    created_at: DateTime!
+    created_at: DateTime
     guest_id: Int
     chatbot_id: Int
   ): Chat_sessions
@@ -315,7 +315,7 @@ type Mutation {
       configuration: "postgresql_config"
     )
   insertChatbot_characteristics(
-    created_at: DateTime!
+    created_at: DateTime
     content: String!
     chatbot_id: Int
   ): Chatbot_characteristics
@@ -356,7 +356,7 @@ type Mutation {
       configuration: "postgresql_config"
     )
   insertChatbots(
-    created_at: DateTime!
+    created_at: DateTime
     name: String!
     clerk_user_id: String!
   ): Chatbots
@@ -396,7 +396,7 @@ type Mutation {
       dml: DELETE
       configuration: "postgresql_config"
     )
-  insertGuests(created_at: DateTime!, email: String, name: String): Guests
+  insertGuests(created_at: DateTime, email: String, name: String): Guests
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -437,7 +437,7 @@ type Mutation {
     chat_session_id: Int
     content: String!
     sender: String!
-    created_at: DateTime!
+    created_at: DateTime
   ): Messages
     @dbquery(
       type: "postgresql"

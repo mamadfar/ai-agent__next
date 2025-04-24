@@ -1,0 +1,11 @@
+# IBM - stepzen
+1. Copy Login command for the CLI from https://eu-central-a.dashboard.ibm.stepzen.com/
+2. create and go to stepzen folder
+3. run command: stepzen init
+4. run command: stepzen import postgresql
+5. Provide our db details
+6. run command: stepzen start
+
+------------------------
+If we have the endpoint and the stepzen folder, to run the stepzen we should use this command inside the stepzen folder: stepzen start
+If we need to be logged in, we should first run the 1st step

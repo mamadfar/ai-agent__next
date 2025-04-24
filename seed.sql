@@ -3,7 +3,7 @@ CREATE TABLE chatbots (
     id SERIAL PRIMARY KEY,
     clerk_user_id VARCHAR(255) NOT NULL, -- Clerk's user ID
     name VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create the chatbot_characteristics table
@@ -11,7 +11,7 @@ CREATE TABLE chatbot_characteristics (
     id SERIAL PRIMARY KEY,
     chatbot_id INT REFERENCES chatbots(id) ON DELETE CASCADE,
     content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create the guests table
@@ -19,7 +19,7 @@ CREATE TABLE guests (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     email VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create the chat_sessions table
@@ -27,7 +27,7 @@ CREATE TABLE chat_sessions (
     id SERIAL PRIMARY KEY,
     chatbot_id INT REFERENCES chatbots(id) ON DELETE CASCADE,
     guest_id INT REFERENCES guests(id) ON DELETE SET NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create the messages table
@@ -35,12 +35,12 @@ CREATE TABLE messages (
     id SERIAL PRIMARY KEY,
     chat_session_id INT REFERENCES chat_sessions(id) ON DELETE CASCADE,
     content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     sender VARCHAR(50) NOT NULL -- 'user' or 'ai'
 );
 
 -- ----------------------------------------------
--- This step is more of a BUG FIX to ensure that the created_at column is set to the current timestamp when a new record is inserted. 
+-- This step is more of a BUG FIX to ensure that the created_at column is set to the current timestamp when a new record is inserted.
 -- We experienced a strange issue with this but usually its not necessary to do this.
 
 -- Create the trigger function to set created_at
