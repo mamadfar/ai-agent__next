@@ -5,5 +5,5 @@ export interface IPageChildren {
 }
 
 export interface IPageParams<Param> {
-    params: Param
+    params: Promise<Param>
 }

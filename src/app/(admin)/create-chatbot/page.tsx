@@ -5,9 +5,10 @@ import Avatar from "@components/common/Avatar";
 import {Input} from "@components/ui/input";
 import {Button} from "@components/ui/button";
 import {useMutation} from "@apollo/client";
-import {CREATE_CHATBOT} from "@/lib/graphql/mutations/mutations";
+import {CREATE_CHATBOT} from "@/lib/graphql/mutations";
 import {useUser} from "@clerk/nextjs";
 import {useRouter} from "next/navigation";
+import { IInsertChatbot } from '@/types/Chatbot.type';
 
 const CreateChatbot = () => {
 
