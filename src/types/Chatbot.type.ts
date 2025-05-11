@@ -53,3 +53,19 @@ export interface IGetChatbotByIdResponse {
 export interface IGetChatbotByIdVariables {
     id: string;
 }
+
+export interface IGetChatbotsByUserResponse {
+    chatbotsByUser: IChatbot[];
+}
+
+export interface IGetChatbotsByUserVariables {
+    clerk_user_id: string;
+}
+
+export interface IGetUserChatbotsResponse {
+    chatbotsByUser: IChatbot[];
+}
+
+export interface IGetUserChatbotsVariables {
+    userId: string;
+}

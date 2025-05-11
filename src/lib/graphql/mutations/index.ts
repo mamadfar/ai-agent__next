@@ -9,6 +9,36 @@ export const CREATE_CHATBOT = gql`
   }
 `;
 
+export const UPDATE_CHATBOT = gql`
+  mutation UpdateChatbot($id: Int!, $name: String!) {
+    updateChatbots(id: $id, name: $name) {
+      id
+      name
+      created_at
+      # Add any other fields you want to return after updating
+    }
+  }
+`
+
+export const DELETE_CHATBOT = gql`
+  mutation DeleteChatbot($id: Int!) {
+    deleteChatbots(id: $id) {
+      id
+    }
+  }
+`
+
+export const ADD_CHARACTERISTIC = gql`
+  mutation AddCharacteristic($chatbotId: Int!, $content: String!) {
+    insertChatbot_characteristics(chatbot_id: $chatbotId, content: $content) {
+      id
+      content
+      created_at
+      # Add any other fields you want to return after adding
+    }
+  }
+`
+
 export const REMOVE_CHARACTERISTIC = gql`
   mutation RemoveCharacteristic($characteristicId: Int!) {
     deleteChatbot_characteristics(id: $characteristicId) {

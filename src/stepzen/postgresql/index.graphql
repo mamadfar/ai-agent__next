@@ -162,6 +162,15 @@ type Query {
       table: "chatbots"
       configuration: "postgresql_config"
     )
+    chatbotsByUser(clerk_user_id: String!): [Chatbots]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT * FROM chatbots WHERE clerk_user_id = $1
+      """
+      configuration: "postgresql_config"
+    )
   chatbotsPaginatedList(first: Int, after: Int): [Chatbots]
     @dbquery(
       type: "postgresql"

@@ -5,3 +5,6 @@ export {default as Sidebar} from './layouts/admin/Sidebar';
 
 //* Providers
 export {default as ApolloProvider} from './providers/ApolloProvider';
+
+//* Common
+export {default as Avatar} from './common/Avatar';
