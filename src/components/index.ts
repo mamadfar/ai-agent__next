@@ -8,3 +8,6 @@ export {default as ApolloProvider} from './providers/ApolloProvider';
 
 //* Common
 export {default as Avatar} from './common/Avatar';
+
+//* Chatbot
+export {default as Messages} from './chatbot/Messages';

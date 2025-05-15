@@ -3,6 +3,7 @@ import { serverClient } from '@/lib/graphql/server/serverClient';
 import { IGetUserChatbotsVariables, IGetUserChatbotsResponse, IChatbot } from '@/types/Chatbot.type';
 import { auth } from '@clerk/nextjs/server';
 import React from 'react'
+import ChatBotSessions from './_components/ChatBotSessions';
 
 const ReviewSessions = async () => {
 
@@ -25,11 +26,12 @@ const ReviewSessions = async () => {
     }))
 
   return (
-    <div>
+    <div className='flex-1 px-10'>
         <h1 className="text-xl lg:text-3xl font-semibold mt-10">Chat Sessions</h1>
         <h2 className="mb-5">
             Review all the chat sessions the chat bots have had with your customers.
         </h2>
+        <ChatBotSessions chatbots={sortedChatbotsByUser} />
     </div>
   )
 }

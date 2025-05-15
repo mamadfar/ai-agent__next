@@ -43,7 +43,7 @@ export interface IChatSession {
     guest_id: string | null;
     created_at: string;
     messages: IMessage[];
-    guests: IGuest[];
+    guests: IGuest;
 }
 
 export interface IGetChatbotByIdResponse {
@@ -68,4 +68,22 @@ export interface IGetUserChatbotsResponse {
 
 export interface IGetUserChatbotsVariables {
     userId: string;
+}
+
+export interface IGetChatSessionMessagesResponse {
+    chat_sessions: {
+        id: number;
+        created_at: string;
+        messages: IMessage[];
+        chatbots: {
+            name: string;
+        };
+        guests: {
+            name: string;
+            email: string;
+        };
+    };
+}
+export interface IGetChatSessionMessagesVariables {
+    id: number;
 }
