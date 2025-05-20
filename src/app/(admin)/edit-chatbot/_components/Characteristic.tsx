@@ -2,7 +2,7 @@
 
 import { FC, MouseEvent } from "react";
 import { IChatbotCharacteristic } from "@/types/Chatbot.type";
-import { OctagonX } from "lucide-react";
+import { CircleX } from "lucide-react";
 import { useMutation } from "@apollo/client";
 import { REMOVE_CHARACTERISTIC } from "@/lib/graphql/mutations";
 import { GET_CHATBOT_BY_ID } from "@/lib/graphql/queries";
@@ -33,7 +33,7 @@ export const Characteristic: FC<IChatbotCharacteristic> = ({ content, id }) => {
   return (
     <li key={id} className="relative p-10 bg-white rounded-md">
       {content}
-      <OctagonX
+      <CircleX
         className="w-6 h-6 text-white fill-red-500 absolute top-1 right-1 cursor-pointer hover:opacity-50"
         onClick={handleRemoveCharacteristic}
       />

@@ -1,8 +1,15 @@
 import React, {FC} from 'react';
 import {IPageChildren} from "@typess/Common.type";
 import {Header, Sidebar} from "@/components";
+import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
-const AdminLayout: FC<IPageChildren> = ({children}) => {
+const AdminLayout: FC<IPageChildren> = async ({children}) => {
+
+    const {userId} = await auth();
+
+    if (!userId) return redirect('/login');
+
     return (
         <div className="flex flex-col flex-[1]">
             <Header/>

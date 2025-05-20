@@ -200,7 +200,7 @@ const EditChatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
               Add
             </Button>
           </form>
-          <ul className="flex flex-wrap-reverse">
+          <ul className="flex flex-wrap-reverse gap-6">
             {data?.chatbots.chatbot_characteristics.map((characteristic) => (
               <Characteristic key={characteristic.id} {...characteristic} />
             ))}
