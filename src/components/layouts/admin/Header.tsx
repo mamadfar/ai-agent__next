@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <header className="bg-white shadow-sm text-gray-800 flex justify-between p-5">
             <Link href="/" className="flex items-center text-4xl font-thin">
-                <Avatar seed="AI Agent"/>
+                <Avatar seed="AI Agent" className='w-18 h-18 mr-2'/>
                 <div className="space-y-1">
                     <h1>Assistly</h1>
                     <h2 className="text-sm">Your Customizable AI Chat Agent</h2>
