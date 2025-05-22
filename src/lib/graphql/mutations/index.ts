@@ -18,7 +18,7 @@ export const UPDATE_CHATBOT = gql`
       # Add any other fields you want to return after updating
     }
   }
-`
+`;
 
 export const DELETE_CHATBOT = gql`
   mutation DeleteChatbot($id: Int!) {
@@ -26,7 +26,7 @@ export const DELETE_CHATBOT = gql`
       id
     }
   }
-`
+`;
 
 export const ADD_CHARACTERISTIC = gql`
   mutation AddCharacteristic($chatbotId: Int!, $content: String!) {
@@ -37,7 +37,7 @@ export const ADD_CHARACTERISTIC = gql`
       # Add any other fields you want to return after adding
     }
   }
-`
+`;
 
 export const REMOVE_CHARACTERISTIC = gql`
   mutation RemoveCharacteristic($characteristicId: Int!) {
@@ -47,3 +47,38 @@ export const REMOVE_CHARACTERISTIC = gql`
     }
   }
 `;
+
+export const INSERT_MESSAGE = gql`
+  mutation InsertMessage(
+    $chat_session_id: Int!
+    $content: String!
+    $sender: String!
+  ) {
+    insertMessages(
+      chat_session_id: $chat_session_id
+      content: $content
+      sender: $sender
+    ) {
+      id
+      content
+      sender
+      created_at
+    }
+  }
+`;
+
+export const INSERT_GUEST = gql`
+  mutation InsertGuest($name: String!, $email: String!) {
+    insertGuests(name: $name, email: $email) {
+      id
+    }
+  }
+`;
+
+export const INSERT_CHAT_SESSION = gql`
+  mutation InsertChatSession($chatbot_id: Int!, $guest_id: Int!) {
+    insertChat_sessions(chatbot_id: $chatbot_id, guest_id: $guest_id) {
+      id
+    }
+  }
+`

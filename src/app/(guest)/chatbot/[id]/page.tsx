@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import startNewChat from "@/lib/startNewChat";
 import { IPageParams } from "@/types/Common.type";
 import { FC, use, useState } from "react";
 
@@ -28,7 +29,16 @@ const Chatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
-    console.log(e);
+    setIsLoading(true);
+    try {
+      const chatId = await startNewChat(name, email, Number(id));
+      setChatId(chatId);
+      setIsOpen(false);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
