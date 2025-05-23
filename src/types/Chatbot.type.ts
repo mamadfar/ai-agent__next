@@ -87,3 +87,11 @@ export interface IGetChatSessionMessagesResponse {
 export interface IGetChatSessionMessagesVariables {
     id: number;
 }
+
+export interface IMessagesByChatSessionIdResponse {
+    chat_sessions: IChatSession;
+}
+
+export interface IMessagesByChatSessionIdVariables {
+   chat_session_id: number;
+}

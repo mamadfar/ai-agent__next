@@ -21,7 +21,7 @@ const startNewChat = async (guestName: string, guestEmail: string, chatbotId: nu
                 chatbot_id: chatbotId,
             },
         });
-        const chatSessionId = chatSessionResult.data.insertChat_sessions.id;
+        const chatSessionId: number = chatSessionResult.data.insertChat_sessions.id;
 
         //* 3. Insert initial message (Optional)
         await client.mutate({
