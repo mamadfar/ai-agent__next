@@ -1,5 +1,7 @@
 import {ApolloClient, DefaultOptions, HttpLink, InMemoryCache} from "@apollo/client";
 
+//? Explain: This code sets up an Apollo Client for server-side rendering
+
 const defaultOptions: DefaultOptions = {
     watchQuery: {
         fetchPolicy: 'no-cache',

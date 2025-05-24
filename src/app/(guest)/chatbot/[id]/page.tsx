@@ -141,12 +141,11 @@ const Chatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
       const result = await response.json();
       setMessages(prevMsg => (
         prevMsg.map(msg => (
-          msg.id === loadingMessage.id ? {...msg, content: result.message, id: result.id} : msg
+          msg.id === loadingMessage.id ? {...msg, content: result.content, id: result.id} : msg
         ))
       ))
     } catch (e) {
       console.error("Error sending message:", e);
-      
     }
   }
 
@@ -221,12 +220,12 @@ const Chatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
           chatbotName={chatBotData?.chatbots.name!}
         />
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-start sticky bottom-0 z-50 space-x-4 drop-shadow-lg p-4 bg-gray-100 rounded-md mt-auto">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-start sticky bottom-0 z-50 space-x-4 drop-shadow-lg p-4 bg-gray-100 rounded-md">
             <FormField
               control={form.control}
               name="message"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
                   <FormLabel hidden>Message</FormLabel>
                   <FormControl>
                     <Input

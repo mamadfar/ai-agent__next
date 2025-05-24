@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { IMessage } from "@/types/Chatbot.type";
 import { UserCircle } from "lucide-react";
@@ -14,21 +14,15 @@ interface IMessagesProps {
 }
 
 const Messages: FC<IMessagesProps> = ({ messages, chatbotName }) => {
-  const ref = useRef<HTMLDivElement>(null);
-
   const path = usePathname();
   const isReviewsPage = path.includes("review-sessions");
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }, [messages]);
 
   return (
-    <div className="w-full flex flex-col overflow-y-auto space-y-10 py-10 px-5 bg-white rounded-lg">
+    <div className="w-full h-full flex flex-col overflow-y-auto space-y-10 py-10 px-5 bg-white rounded-lg">
       {messages.map((message) => {
         const isSenderAi = message.sender !== "user";
 
@@ -54,7 +48,7 @@ const Messages: FC<IMessagesProps> = ({ messages, chatbotName }) => {
                 <UserCircle className="text-[#2991EE]" />
               )}
             </div>
-            <p
+            <div
               className={`chat-bubble text-white ${
                 isSenderAi
                   ? "chat-bubble-primary bg-[#4D7DFB]"
@@ -114,7 +108,7 @@ const Messages: FC<IMessagesProps> = ({ messages, chatbotName }) => {
               >
                 {message.content}
               </ReactMarkdown>
-            </p>
+            </div>
           </div>
         );
       })}

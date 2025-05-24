@@ -51,7 +51,7 @@ const ChatBotSessions: FC<IChatBotSessionsProps> = ({ chatbots }) => {
                       </div>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="flex space-y-5 p-5 bg-gray-100 rounded-md">
+                  <AccordionContent className="flex flex-col space-y-5 p-5 bg-gray-100 rounded-md">
                     {chatbot.chat_sessions.map((session) => (
                       <Link
                         href={`/review-sessions/${session.id}`}
