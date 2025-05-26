@@ -15,8 +15,7 @@ const Header = () => {
             </Link>
             <div className="flex items-center">
                 <SignedIn>
-                    <UserButton/>
-                    
+                    <UserButton showName/>
                 </SignedIn>
                 <SignedOut>
                     <SignInButton/>
