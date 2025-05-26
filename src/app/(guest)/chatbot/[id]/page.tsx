@@ -206,7 +206,7 @@ const Chatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
       <div className="flex flex-col w-full max-w-3xl mx-auto bg-white md:rounded-t-lg shadow-2xl md:mt-10">
         <div className="pb-4 border-b sticky top-0 z-50 bg-[#4D7DFB] py-5 px-10 text-white md:rounded-t-lg flex items-center space-x-4">
           <Avatar
-            seed={chatBotData?.chatbots.name!}
+            seed={chatBotData?.chatbots.name || "AI Agent"}
             className="h-12 w-12 bg-white rounded-full border-2 border-white"
           />
           <div>
@@ -218,7 +218,7 @@ const Chatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
         </div>
         <Messages
           messages={messages}
-          chatbotName={chatBotData?.chatbots.name!}
+          chatbotName={chatBotData?.chatbots.name || "AI Agent"}
         />
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-start sticky bottom-0 z-50 space-x-4 drop-shadow-lg p-4 bg-gray-100 rounded-md">
