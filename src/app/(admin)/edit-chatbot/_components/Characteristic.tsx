@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, MouseEvent } from "react";
+import { FC } from "react";
 import { IChatbotCharacteristic } from "@/types/Chatbot.type";
 import { CircleX } from "lucide-react";
 import { useMutation } from "@apollo/client";
