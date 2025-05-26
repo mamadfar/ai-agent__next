@@ -1,11 +1,11 @@
 import {ApolloClient, createHttpLink, DefaultOptions, InMemoryCache} from "@apollo/client";
 
-export const BASE_URL = process.env.NODE_ENV !== 'development' ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : `http://localhost:3000`;
+// export const BASE_URL = process.env.NODE_ENV !== 'development' ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : `http://localhost:3000`;
 
 //? Explain: This code sets up an Apollo Client for client-side rendering
 
 const httpLink = createHttpLink({
-    uri: `${BASE_URL}/api/graphql`, //? Proxy on the server to the graphql endpoint (stepzen)
+    uri: '/api/graphql', // relative API route handles proxy to stepzen
 })
 
 const defaultOptions: DefaultOptions = {
