@@ -12,7 +12,6 @@ const ReviewSession: FC<IPageParams<{ id: string }>> = async ({params}) => {
 const { id } = await params;
 
 const {data: { chat_sessions: {
-  id: chatSessionId,
   created_at,
   messages,
   chatbots: {

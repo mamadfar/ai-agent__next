@@ -13,7 +13,7 @@ export const Characteristic: FC<IChatbotCharacteristic> = ({ content, id }) => {
     refetchQueries: [GET_CHATBOT_BY_ID],
   });
 
-  const handleRemoveCharacteristic = (e: MouseEvent<SVGElement>) => {
+  const handleRemoveCharacteristic = () => {
     const removeCharacteristicPromise = async () => {
       try {
         await removeCharacteristic({

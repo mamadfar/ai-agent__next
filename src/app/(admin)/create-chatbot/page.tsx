@@ -17,7 +17,7 @@ const CreateChatbot = () => {
     const router = useRouter()
     const {user} = useUser()
 
-    const [createChatbotMutation, {data, loading, error}] = useMutation<IInsertChatbot>(CREATE_CHATBOT, {
+    const [createChatbotMutation, {loading, error}] = useMutation<IInsertChatbot>(CREATE_CHATBOT, {
         variables: {
             clerk_user_id: user?.id,
             name
@@ -35,7 +35,7 @@ const CreateChatbot = () => {
         }
     }
 
-    if (!user) return null
+    if (!user || error) return null
 
     return (
         <div

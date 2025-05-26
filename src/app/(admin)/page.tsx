@@ -12,7 +12,7 @@ export default function Home() {
           <h2 className="mt-2 mb-10">Your customisable AI chat agent that helps you manage your customer conversations.</h2>
         <Link href="/create-chatbot">
           <Button className="bg-[#64B5F5] cursor-pointer">
-            Let's get started by creating your first chatbot
+            Let&apos;s get started by creating your first chatbot
           </Button>
         </Link>
       </main>

@@ -66,7 +66,6 @@ const Chatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
   );
 
   const {
-    loading: loadingQuery,
     error,
     data,
   } = useQuery<
@@ -154,6 +153,8 @@ const Chatbot: FC<IPageParams<{ id: string }>> = ({ params }) => {
       setMessages(data.chat_sessions.messages);
     }
   }, [data]);
+
+  if (error) return <div>Something went wrong!</div>;
 
   return (
     <div className="w-full flex bg-gray-100">
